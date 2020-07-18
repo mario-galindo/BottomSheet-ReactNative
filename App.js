@@ -13,8 +13,20 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 const App = () => {
   renderInner = () => (
-    <View style={{alignItems:"center"}}>
-      <Text>Hello Mario</Text>
+    <View style={styles.panel}>
+      <View style={{alignItems:"center"}}>
+        <Text style={styles.panelTitle}>Upload Photo</Text>
+        <Text style={styles.panelSubtitle}>Choose Your Profile Picture</Text>
+      </View>
+      <TouchableOpacity style={styles.panelButton}>
+        <Text style={styles.panelButtonTitle}>Take Photo</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.panelButton}>
+        <Text style={styles.panelButtonTitle}>Choose from Library</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.panelButton} onPress={()=>bs.current.snapTo(1)}>
+        <Text style={styles.panelButtonTitle}>Cancel</Text>
+      </TouchableOpacity>
     </View>
   );
 
@@ -35,7 +47,7 @@ const App = () => {
         ref={bs}
         renderContent={renderInner}
         renderHeader={renderHeader}
-        snapPoints={[330, 0]}
+        snapPoints={[530, 0]}
         initialSnap={1}
         callbackNode={fall}
         enabledGestureInteraction={true}
@@ -44,7 +56,7 @@ const App = () => {
       <Animated.View
         style={{
           margin: 20,
-          opacity: Animated.add(0.30, Animated.multiply(fall, 1.0)),
+          opacity: Animated.add(0.1, Animated.multiply(fall, 1.0)),
         }}
       >
         <View style={{ alignItems: "center" }}>
@@ -146,5 +158,38 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: "bold",
     color: "white",
+  },
+  panel: {
+    padding: 20,
+    backgroundColor: '#FFFFFF',
+    paddingTop: 20,
+    // borderTopLeftRadius: 20,
+    // borderTopRightRadius: 20,
+    // shadowColor: '#000000',
+    // shadowOffset: {width: 0, height: 0},
+    // shadowRadius: 5,
+    // shadowOpacity: 0.4,
+  },
+  panelTitle: {
+    fontSize: 27,
+    height: 35,
+  },
+  panelSubtitle: {
+    fontSize: 14,
+    color: 'gray',
+    height: 30,
+    marginBottom: 10,
+  },
+  panelButton: {
+    padding: 13,
+    borderRadius: 10,
+    backgroundColor: '#FF6347',
+    alignItems: 'center',
+    marginVertical: 7,
+  },
+  panelButtonTitle: {
+    fontSize: 17,
+    fontWeight: 'bold',
+    color: 'white',
   },
 });
