@@ -14,7 +14,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 const App = () => {
   renderInner = () => (
     <View style={{alignItems:"center"}}>
-      <Text>Hello</Text>
+      <Text>Hello Mario</Text>
     </View>
   );
 
